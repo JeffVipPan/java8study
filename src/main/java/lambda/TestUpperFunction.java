@@ -43,7 +43,7 @@ public class TestUpperFunction {
         BiFunction<Integer, Integer, Integer> biFunction = (i1, i2) -> {
             return i1 * i2;
         };
-        Integer apply = biFunction.apply(100, 40);
+          Integer apply = biFunction.apply(100, 40);
         System.out.println(apply);
     }
 

@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.DoubleToIntFunction;
+import java.util.function.Function;
 
 /**
  * @author 潘峰
@@ -18,7 +20,7 @@ public class TestLambda {
     @Test
     public void test1() {
         employees.add(new Employee("张三", 1000.0, 23));
-        employees.add(new Employee("李四", 2000.0, 22));
+        employees.add(new Employee("李四", 2000.0, 29));
         employees.add(new Employee("王五", 3000.0, 26));
         employees.add(new Employee("赵六", 4000.0, 44));
         employees.add(new Employee("李七", 5000.0, 12));
@@ -42,6 +44,26 @@ public class TestLambda {
         System.out.println(compare);
     }
 
+
+
+    @Test
+    public void test3() {
+        Integer operational = operational(100, (x) -> x * x);
+        System.out.println(operational);
+    }
+
+
+    public Integer operational(Integer num, MyFunciton<Integer> myFunciton) {
+        return myFunciton.getVal(num);
+    }
+
+
+    @Test
+    public void test4() {
+        Function<Integer, Integer> function = (x1) -> x1 * x1;
+        Integer apply = function.apply(100);
+        System.out.println(apply);
+    }
 
 
 

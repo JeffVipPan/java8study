@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.awt.*;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
@@ -46,5 +47,7 @@ public class TestUpperFunction {
           Integer apply = biFunction.apply(100, 40);
         System.out.println(apply);
     }
+
+
 
 }

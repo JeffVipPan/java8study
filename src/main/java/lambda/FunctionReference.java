@@ -3,6 +3,7 @@ package lambda;
 import org.junit.Test;
 
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * @author 潘峰
@@ -20,15 +21,29 @@ public class FunctionReference {
 
 
     /**
-     *  void accept(T t) 返回值必须与  println 参数与返回值相同
+     *  函数式接口中的抽象方法的参数列表与返回值类型 必须与当前调用的参数列表与返回值类型相同
      */
+    // 对象：：实例方法名
     @Test
-    public void test4() {
+    public void test1() {
         Consumer<String> con = (x -> System.out.println(x));
         con.accept("aaa");
 
         Consumer<String> consumer = System.out::println;
         consumer.accept("GGG");
     }
+
+
+    @Test
+    public void test2() {
+        Employee employee = new Employee("zhangsan", 3400.00, 19);
+        Supplier<String> supplier = () -> employee.getName();
+        System.out.println(supplier.get());
+
+        Supplier<String> supplier1 = employee::getName;
+        System.out.println(supplier1.get());
+    }
+
+
 
 }

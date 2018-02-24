@@ -2,6 +2,8 @@ package lambda;
 
 import org.junit.Test;
 
+import java.util.Comparator;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -16,14 +18,17 @@ import java.util.function.Supplier;
  *      对象：：实例方法名
  *      类：：静态方法名
  *      类：：实例方法名
+ *
+ * 注意事项：
+ *      函数式接口中的抽象方法的参数列表与返回值类型 必须与当前调用的参数列表与返回值类型相同
+ *
  */
 public class FunctionReference {
 
 
     /**
-     *  函数式接口中的抽象方法的参数列表与返回值类型 必须与当前调用的参数列表与返回值类型相同
+     *  对象：：实例方法名
      */
-    // 对象：：实例方法名
     @Test
     public void test1() {
         Consumer<String> con = (x -> System.out.println(x));
@@ -42,6 +47,39 @@ public class FunctionReference {
 
         Supplier<String> supplier1 = employee::getName;
         System.out.println(supplier1.get());
+    }
+
+    /**
+     * 类：：静态方法名
+     */
+    @Test
+    public void test3() {
+        Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
+
+        Comparator<Integer> comparator = Integer::compare;
+        System.out.println(com.compare(23, 432));
+
+        System.out.println(comparator.compare(23, 343));
+    }
+
+
+    /**
+     *  类：：实例方法名
+     *  当第一个参数是 实例方法的调用者，第二个参数是实例方法的参数时，可以使用 类：：实例方法名
+     */
+    @Test
+    public void test4() {
+        BiPredicate<String, String> biPredicate = (x, y) -> {
+            return x.equals(y);
+        };
+        System.out.println(biPredicate.test("x", "y"));
+
+        BiPredicate<String, String> bi = String::equals;
+        System.out.println(bi.test("yy", "yy"));
+
+        BiPredicate<Integer, Integer> biPredicate1 = (x, y) -> x.equals(y);
+
+
     }
 
 

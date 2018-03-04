@@ -71,9 +71,8 @@ public class FunctionReference {
      */
     @Test
     public void test4() {
-        BiPredicate<String, String> biPredicate = (x, y) -> {
-            return x.equals(y);
-        };
+        BiPredicate<String, String> biPredicate = (x, y) ->
+             x.equals(y);
         System.out.println(biPredicate.test("x", "y"));
 
         BiPredicate<String, String> bi = String::equals;

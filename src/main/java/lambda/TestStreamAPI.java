@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -77,6 +79,7 @@ public class TestStreamAPI {
     @Test
     public void test4() {
         List<String> stringList = new ArrayList<>();
+
         for (int i = 0; i < 100000; i++) {
             stringList.add("aaa" + i);
         }
@@ -88,6 +91,24 @@ public class TestStreamAPI {
 
     }
 
+
+    @Test
+    public void test5() {
+        List<People> peopleList = new ArrayList<>();
+
+        Map<String, List<People>> collect = peopleList.stream().collect(
+                Collectors.groupingBy(People::getName
+                ));
+        System.out.println(collect);
+
+
+        long start = System.currentTimeMillis();
+        Map<String, Map<Double, List<People>>> collect1 = peopleList.stream().collect(
+                Collectors.groupingBy(
+                        People::getName, Collectors.groupingBy(People::getSalary)
+                ));
+        List<People> people = collect.get("zs");
+    }
 
 }
 

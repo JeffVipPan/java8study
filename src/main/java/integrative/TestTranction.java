@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -97,6 +98,29 @@ public class TestTranction {
                 .map(Transaction::getValue)
                 .reduce(Integer::sum);
     }
+
+
+    /**
+     * 所有的交易额中最高的交易额
+     */
+    @Test
+    public void test8() {
+        Optional<Integer> max = testTranctions.stream()
+                .map(Transaction::getValue)
+                .max(Integer::compareTo);
+        System.out.println(max.get());
+    }
+
+
+    /**
+     * 所有的交易额中最小的交易额
+     */
+    @Test
+    public void test9() {
+        Optional<Transaction> min = testTranctions.stream().min(Comparator.comparingInt(Transaction::getValue));
+        System.out.println(min.get());
+    }
+
 
 
 

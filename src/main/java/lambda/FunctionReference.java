@@ -65,7 +65,7 @@ public class FunctionReference {
 
     /**
      *  类：：实例方法名
-     *  当第一个参数是 实例方法的调用者，第二个参数是实例方法的参数时，可以使用 类：：实例方法名
+     *  当第一个参数是 实例方法的调用者，第二个参数是实例方法的参数时，可以使用 ClassName::method
      */
     @Test
     public void test4() {

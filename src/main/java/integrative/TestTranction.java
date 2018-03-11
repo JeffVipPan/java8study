@@ -122,6 +122,14 @@ public class TestTranction {
     }
 
 
+    @Test
+    public void test10() {
+        List<Integer> valus = Arrays.asList(1, 2, 4, 5, 6, 100);
+        int sum = valus.parallelStream().mapToInt(x -> x).sum();
+        System.out.println(sum);
+    }
+
+
 
 
 }

@@ -130,6 +130,13 @@ public class TestTranction {
     }
 
 
+    @Test
+    public void test11() {
+        testTranctions.stream().map(t -> t.getValue()).collect(Collectors.toList()).forEach(System.out::println);
+
+    }
+
+
 
 
 }
